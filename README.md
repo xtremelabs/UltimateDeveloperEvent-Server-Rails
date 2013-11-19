@@ -26,9 +26,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`GET /device/`
+`GET /devices/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/device/
+    curl -i -H 'Accept: application/json' http://localhost:7000/devices/
 
 ### Response
 
@@ -45,7 +45,7 @@ The REST API to the example app is described below.
 
 ### Request
 
-`POST /device/`
+`POST /devices/`
 
     curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' http://localhost:7000/device
 
@@ -53,17 +53,17 @@ The REST API to the example app is described below.
 
 ### Request
 
-`GET /device/id`
+`GET /devices/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/device/1
+    curl -i -H 'Accept: application/json' http://localhost:7000/devices/1
 
 ## Get a non-existent Device
 
 ### Request
 
-`GET /device/id`
+`GET /devices/id`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/device/9999
+    curl -i -H 'Accept: application/json' http://localhost:7000/devices/9999
 
 ### Response
 
@@ -80,9 +80,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`PUT /device/:id/status/changed`
+`PUT /devices/:id/status/changed`
 
-    curl -i -H 'Accept: application/json' -X PUT http://localhost:7000/device/1/status/changed
+    curl -i -H 'Accept: application/json' -X PUT http://localhost:7000/devices/1/status/changed
 
 ### Response
 
@@ -99,9 +99,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`PUT /device/:id`
+`PUT /devices/:id`
 
-    curl -i -H 'Accept: application/json' -X PUT -d 'name=Foo&status=changed2' http://localhost:7000/device/1
+    curl -i -H 'Accept: application/json' -X PUT -d 'name=Foo&status=changed2' http://localhost:7000/devices/1
 
 ### Response
 
@@ -119,9 +119,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`POST /device/:id?_method=POST`
+`POST /devices/:id?_method=POST`
 
-    curl -i -H 'Accept: application/json' -X POST -d 'name=Baz&_method=PUT' http://localhost:7000/device/1
+    curl -i -H 'Accept: application/json' -X POST -d 'name=Baz&_method=PUT' http://localhost:7000/devices/1
 
 ### Response
 
@@ -138,9 +138,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`DELETE /device/id`
+`DELETE /devices/id`
 
-    curl -i -H 'Accept: application/json' -X DELETE http://localhost:7000/device/1/
+    curl -i -H 'Accept: application/json' -X DELETE http://localhost:7000/devices/1/
 
 ### Response
 

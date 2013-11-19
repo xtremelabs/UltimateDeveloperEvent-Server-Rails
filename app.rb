@@ -98,8 +98,8 @@ class DeviceResource < Sinatra::Base
     end
   end
 
-  ## GET /device - return all devices
-  get "/device/?", :provides => :json do
+  ## GET /devices - return all devices
+  get "/devices/?", :provides => :json do
     content_type :json
 
     if devices = Device.all
@@ -110,7 +110,7 @@ class DeviceResource < Sinatra::Base
   end
 
   ## GET /device/:id - return device with specified id
-  get "/device/:id", :provides => :json do
+  get "/devices/:id", :provides => :json do
     content_type :json
 
     # check that :id param is an integer
@@ -127,13 +127,13 @@ class DeviceResource < Sinatra::Base
   end
 
   ## POST /device/ - create new device
-  post "/device/?", :provides => :json do
+  post "/devices/?", :provides => :json do
     content_type :json
 
     new_params = accept_params(params, :name, :status, :operatingSystem, :version)
     device = Device.new(new_params)
     if device.save
-      headers["Location"] = "/device/#{device.id}"
+      headers["Location"] = "/devices/#{device.id}"
       # http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5
       status 201 # Created
       device.to_json
@@ -143,7 +143,7 @@ class DeviceResource < Sinatra::Base
   end
 
   ## PUT /device/:id/:status - change a device's status
-  put_or_post "/device/:id/status/:status", :provides => :json do
+  put_or_post "/devices/:id/status/:status", :provides => :json do
     content_type :json
 
     if Device.valid_id?(params[:id])
@@ -163,7 +163,7 @@ class DeviceResource < Sinatra::Base
   end
 
   ## PUT /device/:id - change or create a device
-  put "/device/:id", :provides => :json do
+  put "/devices/:id", :provides => :json do
     content_type :json
 
     new_params = accept_params(params, :name, :status, :operatingSystem, :version)
@@ -185,7 +185,7 @@ class DeviceResource < Sinatra::Base
   end
 
   ## DELETE /device/:id - delete a specific device
-  delete "/device/:id/?", :provides => :json do
+  delete "/devices/:id/?", :provides => :json do
     content_type :json
 
     if device = Device.first(:id => params[:id].to_i)
